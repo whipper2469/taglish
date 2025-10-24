@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Path - Gambling Addiction Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #3a6186);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(58, 97, 134, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%233a6186"/><path d="M0 0L100 100" stroke="%231a2a6c" stroke-width="2"/><path d="M100 0L0 100" stroke="%231a2a6c" stroke-width="2"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #1a2a6c;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #ffd633;
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a2a6c;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ffcc00;
+            border-radius: 2px;
+        }
+        
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-content h3 {
+            color: #1a2a6c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: #3a6186;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Forms */
+        .form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* Resources Section */
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .resource-card i {
+            font-size: 2.5rem;
+            color: #3a6186;
+            margin-bottom: 1rem;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-container {
+            background: #f1f1f1;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: #3a6186;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            transition: width 0.3s;
+        }
+        
+        .goal-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .goal-list li {
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .goal-list li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-messages {
+            padding: 1rem;
+            height: 300px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background-color: #3a6186;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 0.5rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+        }
+        
+        .chatbot-btn {
+            background-color: #1a2a6c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1a2a6c;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-info {
+            margin: 1rem 0;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-grid, .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chatbot-container {
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Recovery Path</a>
+            <nav>
+                <ul>
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="blog">Blog</a></li>
+                    <li><a href="#" data-page="resources">Resources</a></li>
+                    <li><a href="#" data-page="signup" id="signup-link">Sign Up</a></li>
+                    <li><a href="#" data-page="login" id="login-link">Login</a></li>
+                    <li><a href="#" data-page="dashboard" id="dashboard-link" style="display: none;">Dashboard</a></li>
+                    <li><a href="#" id="logout-link" style="display: none;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <h1>Breaking Free From Gambling Addiction</h1>
+                <p>Gambling doesn't just hurt you - it devastates families, destroys finances, and exploits vulnerable people. Together, we can fight back against predatory online casinos.</p>
+                <a href="#" class="btn" data-page="signup">Join Our Community</a>
+            </div>
+
+            <h2 class="section-title">How Gambling Hurts Families and Finances</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>The Financial Ruin</h3>
+                        <p>Gambling addiction can lead to catastrophic financial losses, debt, bankruptcy, and even loss of homes and livelihoods.</p>
+                        <a href="#" class="read-more" data-page="blog">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>Family Strain</h3>
+                        <p>Relationships suffer as trust is broken, leading to conflict, separation, and sometimes divorce.</p>
+                        <a href="#" class="read-more" data-page="blog">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>Emotional Toll</h3>
+                        <p>The constant stress and anxiety take a severe toll on mental health for both the gambler and their loved ones.</p>
+                        <a href="#" class="read-more" data-page="blog">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Newsletter Signup</h2>
+            <div class="form-container">
+                <form id="newsletter-form">
+                    <div class="form-group">
+                        <label for="newsletter-email">Email Address</label>
+                        <input type="email" id="newsletter-email" required placeholder="Enter your email">
+                    </div>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Blog Page -->
+        <section id="blog-page" class="page">
+            <h2 class="section-title">Blog Posts</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>The Financial Ruin of Gambling Addiction</h3>
+                        <p>Gambling addiction can quickly spiral into financial catastrophe. Many addicts exhaust their savings, max out credit cards, take out predatory loans, and even resort to illegal activities to fund their addiction...</p>
+                        <a href="#" class="read-more" data-blog="1">Read Full Article</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>How Gambling Destroys Families</h3>
+                        <p>Beyond the financial devastation, gambling addiction fractures family relationships. The secrecy, lies, and broken promises erode trust between partners, parents and children, and among extended family...</p>
+                        <a href="#" class="read-more" data-blog="2">Read Full Article</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>The Tricks Online Casinos Use</h3>
+                        <p>Online casinos have developed sophisticated methods to bypass banking security measures and deceive financial institutions. Many use disguised merchant codes that make gambling transactions appear as regular retail purchases...</p>
+                        <a href="#" class="read-more" data-blog="3">Read Full Article</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>Recovery Stories: Finding Hope</h3>
+                        <p>Mark had lost everything - his job, his home, and nearly his family. After maxing out seven credit cards and draining his children's college fund, he hit rock bottom. Through our support community and professional counseling...</p>
+                        <a href="#" class="read-more" data-blog="4">Read Full Article</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>Protecting Your Finances from Gambling</h3>
+                        <p>If you or a loved one struggles with gambling addiction, implementing financial safeguards is crucial. Consider setting up accountability with your bank, using prepaid cards instead of credit cards, and limiting access to large sums of money...</p>
+                        <a href="#" class="read-more" data-blog="5">Read Full Article</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>Legal Actions Against Predatory Casinos</h3>
+                        <p>There's a growing movement to hold online casinos accountable for their deceptive practices. Class action lawsuits are being filed against operators who disguise gambling transactions and target vulnerable populations...</p>
+                        <a href="#" class="read-more" data-blog="6">Read Full Article</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Page -->
+        <section id="resources-page" class="page">
+            <h2 class="section-title">Helpful Resources</h2>
+            <div class="resources">
+                <div class="resource-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Crisis Helplines</h3>
+                    <p>24/7 support from trained counselors specializing in gambling addiction</p>
+                    <a href="#" class="btn">View Numbers</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-couch"></i>
+                    <h3>Therapy Options</h3>
+                    <p>Find certified therapists specializing in gambling addiction treatment</p>
+                    <a href="#" class="btn">Find Help</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Financial Counseling</h3>
+                    <p>Professional help to manage debt and rebuild your finances</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Support Groups</h3>
+                    <p>Local and online meetings for those affected by gambling addiction</p>
+                    <a href="#" class="btn">Find Meetings</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Page -->
+        <section id="signup-page" class="page">
+            <h2 class="section-title">Create an Account</h2>
+            <div class="form-container">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required placeholder="Create a password">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-phone">Phone Number (Optional)</label>
+                        <input type="tel" id="signup-phone" placeholder="Enter your phone number">
+                    </div>
+                    <button type="submit" class="btn">Create Account</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login-page" class="page">
+            <h2 class="section-title">Login to Your Account</h2>
+            <div class="form-container">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard-page" class="page">
+            <h2 class="section-title">Your Recovery Dashboard</h2>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Recovery Progress</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="recovery-progress" style="width: 30%;">30%</div>
+                    </div>
+                    <p>You're making progress! Keep taking it one day at a time.</p>
+                    <button class="btn" id="update-progress">Update Progress</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Gamble-Free Days</h3>
+                    <h2 id="gamble-free-days">7</h2>
+                    <p>Days since your last gambling activity</p>
+                    <button class="btn" id="reset-counter">Reset Counter</button>
+                    <button class="btn" id="increment-counter">+1 Day</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>My Goals</h3>
+                    <ul class="goal-list" id="goal-list">
+                        <li class="completed">Find a support group</li>
+                        <li class="completed">Install gambling blockers</li>
+                        <li>Talk to a financial counselor</li>
+                        <li>30 days gamble-free</li>
+                    </ul>
+                    <div class="form-group">
+                        <input type="text" id="new-goal" placeholder="Add a new goal">
+                        <button class="btn" id="add-goal">Add Goal</button>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Next Steps</h3>
+                    <p>Based on your progress, here's what we recommend:</p>
+                    <ul>
+                        <li>Schedule a meeting with a financial advisor</li>
+                        <li>Join our Thursday support group</li>
+                        <li>Read "The First 90 Days of Recovery"</li>
+                    </ul>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>My Action Plan</h3>
+                    <div class="form-group">
+                        <label for="action-steps">Steps I'm taking this week:</label>
+                        <textarea id="action-steps" rows="4">- Attend 2 support meetings
+- Exercise for 30 minutes daily
+- Call my accountability partner every day</textarea>
+                    </div>
+                    <button class="btn" id="save-actions">Save Actions</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>My Profile</h3>
+                    <div class="form-group">
+                        <label for="user-name">Name</label>
+                        <input type="text" id="user-name" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" value="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-recovery-date">Recovery Start Date</label>
+                        <input type="date" id="user-recovery-date" value="2023-09-01">
+                    </div>
+                    <button class="btn" id="save-profile">Save Profile</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-toggle" id="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Support Chat</h3>
+            <span id="close-chatbot">×</span>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">Hello! I'm here to help with questions about gambling addiction support. How can I assist you today?</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your message here...">
+            <button class="chatbot-btn" id="send-message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Recovery Path - Gambling Addiction Support</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:kevin.roy8@icloud.com" style="color: #ffcc00;">kevin.roy8@icloud.com</a></p>
+                <p>Phone: <a href="tel:1-519-589-0620" style="color: #ffcc00;">1-519-589-0620</a></p>
+            </div>
+            <p>&copy; 2023 Recovery Path. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Blog Modals -->
+    <div class="modal" id="blog-modal-1">
+        <div class="modal-content">
+            <span class="close-modal" data-blog="1">×</span>
+            <h2>The Financial Ruin of Gambling Addiction</h2>
+            <p>Gambling addiction can quickly spiral into financial catastrophe. Many addicts exhaust their savings, max out credit cards, take out predatory loans, and even resort to illegal activities to fund their addiction.</p>
+            <p>The average problem gambler accumulates debts between $40,000 and $90,000, often hidden from family members until it's too late. This debt burden creates immense stress and can lead to bankruptcy, home foreclosure, and inability to meet basic living expenses.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="blog-modal-2">
+        <div class="modal-content">
+            <span class="close-modal" data-blog="2">×</span>
+            <h2>How Gambling Destroys Families</h2>
+            <p>Beyond the financial devastation, gambling addiction fractures family relationships. The secrecy, lies, and broken promises erode trust between partners, parents and children, and among extended family.</p>
+            <p>Children of gambling addicts often experience neglect, emotional trauma, and financial instability. They may witness arguments about money, experience frequent moves or housing insecurity, and suffer from the emotional absence of the addicted parent.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="blog-modal-3">
+        <div class="modal-content">
+            <span class="close-modal" data-blog="3">×</span>
+            <h2>The Tricks Online Casinos Use</h2>
+            <p>Online casinos have developed sophisticated methods to bypass banking security measures and deceive financial institutions. Many use disguised merchant codes that make gambling transactions appear as regular retail purchases.</p>
+            <p>This manipulation prevents banks from flagging gambling activity and circumvents self-exclusion protocols that customers may have set up with their financial institutions. Some casinos even use multiple merchant names and codes to avoid detection.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="blog-modal-4">
+        <div class="modal-content">
+            <span class="close-modal" data-blog="4">×</span>
+            <h2>Recovery Stories: Finding Hope</h2>
+            <p>Mark had lost everything - his job, his home, and nearly his family. After maxing out seven credit cards and draining his children's college fund, he hit rock bottom. Through our support community and professional counseling, Mark has been gamble-free for 18 months.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="blog-modal-5">
+        <div class="modal-content">
+            <span class="close-modal" data-blog="5">×</span>
+            <h2>Protecting Your Finances from Gambling</h2>
+            <p>If you or a loved one struggles with gambling addiction, implementing financial safeguards is crucial. Consider these strategies:</p>
+            <ol>
+                <li>Set up accountability with your bank</li>
+                <li>Use prepaid cards instead of credit cards</li>
+                <li>Implement dual authorization for large transactions</li>
+                <li>Direct deposit allocation to limit accessible funds</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="modal" id="blog-modal-6">
+        <div class="modal-content">
+            <span class="close-modal" data-blog="6">×</span>
+            <h2>Legal Actions Against Predatory Casinos</h2>
+            <p>There's a growing movement to hold online casinos accountable for their deceptive practices. Class action lawsuits are being filed against operators who disguise gambling transactions and target vulnerable populations.</p>
+        </div>
+    </div>
+
+    <script>
+        // User Management System
+        let currentUser = null;
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        
+        // Page Navigation
+        document.querySelectorAll('a[data-page]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                document.getElementById(`${pageId}-page`).classList.add('active');
+                
+                // Close any open modals
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            });
+        });
+
+        // Initialize page navigation
+        function initNavigation() {
+            // Set up page navigation
+            document.querySelectorAll('a[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Set up blog modal navigation
+            document.querySelectorAll('.read-more[data-blog]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const blogId = this.getAttribute('data-blog');
+                    document.getElementById(`blog-modal-${blogId}`).style.display = 'flex';
+                });
+            });
+            
+            // Close modals
+            document.querySelectorAll('.close-modal').forEach(button => {
+                button.addEventListener('click', function() {
+                    const blogId = this.getAttribute('data-blog');
+                    document.getElementById(`blog-modal-${blogId}`).style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking outside content
+            window.addEventListener('click', function(e) {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Show specific page
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(`${pageId}-page`).classList.add('active');
+        }
+
+        // Update UI based on authentication status
+        function updateUIForAuth() {
+            if (currentUser) {
+                // User is logged in
+                document.getElementById('signup-link').style.display = 'none';
+                document.getElementById('login-link').style.display = 'none';
+                document.getElementById('dashboard-link').style.display = 'block';
+                document.getElementById('logout-link').style.display = 'block';
+                
+                // Load user data into dashboard
+                loadUserDashboard();
+            } else {
+                // User is not logged in
+                document.getElementById('signup-link').style.display = 'block';
+                document.getElementById('login-link').style.display = 'block';
+                document.getElementById('dashboard-link').style.display = 'none';
+                document.getElementById('logout-link').style.display = 'none';
+            }
+        }
+
+        // Load user data into dashboard
+        function loadUserDashboard() {
+            if (!currentUser) return;
+            
+            // Load user profile data
+            document.getElementById('user-name').value = currentUser.name || '';
+            document.getElementById('user-email').value = currentUser.email || '';
+            document.getElementById('user-recovery-date').value = currentUser.recoveryDate || '';
+            
+            // Load gamble-free days
+            if (currentUser.recoveryDate) {
+                const startDate = new Date(currentUser.recoveryDate);
+                const today = new Date();
+                const diffTime = Math.abs(today - startDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                document.getElementById('gamble-free-days').textContent = diffDays;
+            }
+            
+            // Load goals
+            if (currentUser.goals) {
+                const goalList = document.getElementById('goal-list');
+                goalList.innerHTML = '';
+                currentUser.goals.forEach(goal => {
+                    const li = document.createElement('li');
+                    li.textContent = goal.text;
+                    if (goal.completed) {
+                        li.classList.add('completed');
+                    }
+                    goalList.appendChild(li);
+                });
+            }
+            
+            // Load action steps
+            if (currentUser.actionSteps) {
+                document.getElementById('action-steps').value = currentUser.actionSteps;
+            }
+            
+            // Load progress
+            if (currentUser.progress) {
+                document.getElementById('recovery-progress').style.width = `${currentUser.progress}%`;
+                document.getElementById('recovery-progress').textContent = `${currentUser.progress}%`;
+            }
+        }
+
+        // Save user data to localStorage
+        function saveUserData() {
+            if (!currentUser) return;
+            
+            // Find user in array and update
+            const index = users.findIndex(u => u.email === currentUser.email);
+            if (index !== -1) {
+                users[index] = currentUser;
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+        }
+
+        // Forms
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our support newsletter soon.`);
+            this.reset();
+        });
+
+        // Signup form
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const phone = document.getElementById('signup-phone').value;
+
+            // Check if user already exists
+            if (users.find(user => user.email === email)) {
+                alert('An account with this email already exists. Please login instead.');
+                return;
+            }
+
+            // Create new user with default data
+            const newUser = { 
+                name, 
+                email, 
+                password, 
+                phone,
+                recoveryDate: new Date().toISOString().split('T')[0],
+                progress: 30,
+                goals: [
+                    { text: "Find a support group", completed: true },
+                    { text: "Install gambling blockers", completed: true },
+                    { text: "Talk to a financial counselor", completed: false },
+                    { text: "30 days gamble-free", completed: false }
+                ],
+                actionSteps: "- Attend 2 support meetings\n- Exercise for 30 minutes daily\n- Call my accountability partner every day"
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Set as current user
+            currentUser = newUser;
+            updateUIForAuth();
+            
+            alert(`Thank you ${name} for creating an account! You are now logged in.`);
+            this.reset();
+            
+            // Show dashboard
+            showPage('dashboard');
+        });
+
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // Find user
+            const user = users.find(user => user.email === email && user.password === password);
+            
+            if (user) {
+                currentUser = user;
+                updateUIForAuth();
+                alert(`Welcome back, ${user.name}! You are now logged in.`);
+                this.reset();
+                
+                // Show dashboard
+                showPage('dashboard');
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logout-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            currentUser = null;
+            updateUIForAuth();
+            alert('You have been logged out successfully.');
+            
+            // Show home page
+            showPage('home');
+        });
+
+        // Dashboard functionality
+        document.getElementById('save-profile').addEventListener('click', function() {
+            if (!currentUser) return;
+            
+            currentUser.name = document.getElementById('user-name').value;
+            currentUser.email = document.getElementById('user-email').value;
+            currentUser.recoveryDate = document.getElementById('user-recovery-date').value;
+            
+            saveUserData();
+            alert('Profile updated successfully!');
+        });
+
+        document.getElementById('add-goal').addEventListener('click', function() {
+            if (!currentUser) return;
+            
+            const newGoalText = document.getElementById('new-goal').value;
+            if (!newGoalText) return;
+            
+            if (!currentUser.goals) currentUser.goals = [];
+            currentUser.goals.push({ text: newGoalText, completed: false });
+            
+            saveUserData();
+            loadUserDashboard();
+            document.getElementById('new-goal').value = '';
+        });
+
+        document.getElementById('save-actions').addEventListener('click', function() {
+            if (!currentUser) return;
+            
+            currentUser.actionSteps = document.getElementById('action-steps').value;
+            saveUserData();
+            alert('Action steps saved successfully!');
+        });
+
+        document.getElementById('update-progress').addEventListener('click', function() {
+            if (!currentUser) return;
+            
+            const newProgress = prompt('Enter your recovery progress (0-100%):', currentUser.progress || '30');
+            if (newProgress !== null) {
+                const progressValue = parseInt(newProgress);
+                if (!isNaN(progressValue) && progressValue >= 0 && progressValue <= 100) {
+                    currentUser.progress = progressValue;
+                    saveUserData();
+                    loadUserDashboard();
+                } else {
+                    alert('Please enter a valid number between 0 and 100.');
+                }
+            }
+        });
+
+        document.getElementById('reset-counter').addEventListener('click', function() {
+            if (!currentUser) return;
+            
+            if (confirm('Reset your gamble-free days counter to 0?')) {
+                currentUser.recoveryDate = new Date().toISOString().split('T')[0];
+                saveUserData();
+                loadUserDashboard();
+            }
+        });
+
+        document.getElementById('increment-counter').addEventListener('click', function() {
+            if (!currentUser || !currentUser.recoveryDate) return;
+            
+            const recoveryDate = new Date(currentUser.recoveryDate);
+            recoveryDate.setDate(recoveryDate.getDate() - 1);
+            currentUser.recoveryDate = recoveryDate.toISOString().split('T')[0];
+            saveUserData();
+            loadUserDashboard();
+        });
+
+        // Toggle goal completion
+        document.getElementById('goal-list').addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI' && currentUser && currentUser.goals) {
+                const goalText = e.target.textContent;
+                const goalIndex = currentUser.goals.findIndex(g => g.text === goalText);
+                
+                if (goalIndex !== -1) {
+                    currentUser.goals[goalIndex].completed = !currentUser.goals[goalIndex].completed;
+                    saveUserData();
+                    loadUserDashboard();
+                }
+            }
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const closeChatbot = document.getElementById('close-chatbot');
+        const chatMessages = document.getElementById('chatbot-messages');
+        const chatInput = document.getElementById('chatbot-input');
+        const sendMessageBtn = document.getElementById('send-message');
+        let humanRequested = false;
+
+        chatbotToggle.addEventListener('click', function() {
+            chatbotContainer.style.display = 'flex';
+        });
+
+        closeChatbot.addEventListener('click', function() {
+            chatbotContainer.style.display = 'none';
+            humanRequested = false;
+        });
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleChatbotResponse() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            chatInput.value = '';
+
+            // Simulate bot thinking
+            setTimeout(() => {
+                let response = '';
+                
+                if (message.toLowerCase().includes('help') || message.toLowerCase().includes('support')) {
+                    response = "I can help connect you with resources. Would you like information about crisis hotlines, support groups, or financial counseling?";
+                } else if (message.toLowerCase().includes('stop') || message.toLowerCase().includes('quit')) {
+                    response = "Quitting gambling is a brave decision. Have you considered self-exclusion programs? They can help block access to gambling sites.";
+                } else if (message.toLowerCase().includes('debt') || message.toLowerCase().includes('money')) {
+                    response = "Financial difficulties are common with gambling addiction. We can connect you with debt counseling services. Would you like more information?";
+                } else if (message.toLowerCase().includes('family') || message.toLowerCase().includes('relationship')) {
+                    response = "Gambling often strains relationships. Family counseling and support groups for loved ones can help. Should I send you information about these resources?";
+                } else if (message.toLowerCase().includes('human') || message.toLowerCase().includes('person')) {
+                    response = "I've connected you with a support specialist. They'll be with you shortly. Please stay on the line.";
+                    humanRequested = true;
+                    
+                    // Simulate human connection after delay
+                    setTimeout(() => {
+                        addMessage("Hello, this is Sarah, a support specialist. How can I help you today?");
+                    }, 3000);
+                } else {
+                    response = "I understand this is difficult. Would you like to speak with a human support specialist? I can connect you with someone who can help.";
+                }
+                
+                addMessage(response);
+                
+                // If the user seems to need more help, offer human connection after a delay
+                if ((message.length > 10 || message.toLowerCase().includes('help')) && !humanRequested) {
+                    setTimeout(() => {
+                        addMessage("It seems like you might benefit from speaking with one of our support specialists. Would you like me to connect you now?");
+                    }, 30000); // 30 seconds delay
+                }
+            }, 1000);
+        }
+
+        sendMessageBtn.addEventListener('click', handleChatbotResponse);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleChatbotResponse();
+            }
+        });
+
+        // Initialize the application
+        function initApp() {
+            initNavigation();
+            updateUIForAuth();
+            
+            // Check if user was previously logged in (for demo purposes)
+            // In a real application, you would use more secure methods
+            const lastUserEmail = localStorage.getItem('lastUserEmail');
+            if (lastUserEmail) {
+                const user = users.find(u => u.email === lastUserEmail);
+                if (user) {
+                    currentUser = user;
+                    updateUIForAuth();
+                }
+            }
+        }
+
+        // Start the application
+        initApp();
+    </script>
+</body>
+</html>

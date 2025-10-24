@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mackesy Smye | Hamilton Personal Injury & Disability Lawyers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a3e6a;
+            --secondary: #9e832f;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #867025;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        
+        .phone {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .emergency {
+            color: #dc3545;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(26, 62, 106, 0.8), rgba(26, 62, 106, 0.8)), url('https://mackesysmye.com/wp-content/uploads/2022/03/home-hero-1.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Practice areas */
+        .practice-areas {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .area-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .area-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .area-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .area-card:hover .area-img img {
+            transform: scale(1.05);
+        }
+        
+        .area-content {
+            padding: 25px;
+        }
+        
+        .area-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .area-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* About section */
+        .about {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light);
+            text-align: center;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Team section */
+        .team {
+            padding: 80px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        /* Contact section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+        
+        .contact-details h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .contact-details p {
+            color: var(--gray);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-info {
+                align-items: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://mackesysmye.com/wp-content/uploads/2022/03/ms-lawyers-logo.png" alt="Mackesy Smye Lawyers">
+                </a>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Practice Areas</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="contact-info">
+                <div class="phone"><i class="fas fa-phone"></i> (905) 525-2341</div>
+                <div class="emergency">24/7 Emergency Line Available</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Hamilton's Trusted Personal Injury & Disability Lawyers</h1>
+            <p>With over 30 years of experience, we fight for the compensation and justice you deserve.</p>
+            <a href="#" class="btn">Free Case Evaluation</a>
+        </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section class="practice-areas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Practice Areas</h2>
+                <p>We specialize in personal injury and disability law, providing expert legal representation for various cases.</p>
+            </div>
+            
+            <div class="areas-grid">
+                <div class="area-card">
+                    <div class="area-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/brain-injury-1.jpg" alt="Brain Injury">
+                    </div>
+                    <div class="area-content">
+                        <h3>Brain Injury</h3>
+                        <p>Experienced representation for traumatic brain injuries resulting from accidents.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/spinal-cord-injury-1.jpg" alt="Spinal Cord Injury">
+                    </div>
+                    <div class="area-content">
+                        <h3>Spinal Cord Injury</h3>
+                        <p>Compassionate legal support for life-changing spinal cord injuries.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/disability-insurance-1.jpg" alt="Disability Insurance">
+                    </div>
+                    <div class="area-content">
+                        <h3>Disability Insurance</h3>
+                        <p>Fighting for your rightful disability benefits when you need them most.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Mackesy Smye</h2>
+                    <p>Mackesy Smye is a leading Hamilton-based law firm specializing in personal injury and disability law. With over three decades of experience, our team of dedicated lawyers has successfully represented thousands of clients.</p>
+                    <p>We understand the physical, emotional, and financial challenges that come with personal injuries, and we're committed to fighting for the compensation and justice our clients deserve.</p>
+                    <a href="#" class="btn">Learn More About Us</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://mackesysmye.com/wp-content/uploads/2022/03/office-building-1.jpg" alt="Mackesy Smye Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our clients have to say about their experience with our firm.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The team at Mackesy Smye was incredibly supportive throughout my entire case. They fought tirelessly to ensure I received the compensation I deserved after my accident."</p>
+                    <p class="testimonial-author">- John D., Hamilton</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Legal Team</h2>
+                <p>Meet our experienced lawyers dedicated to fighting for your rights.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/team-member-1.jpg" alt="Lawyer Name">
+                    </div>
+                    <h3>David Mackesy</h3>
+                    <p>Senior Partner</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/team-member-2.jpg" alt="Lawyer Name">
+                    </div>
+                    <h3>Michael Smye</h3>
+                    <p>Senior Partner</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/team-member-3.jpg" alt="Lawyer Name">
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <p>Associate Lawyer</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/team-member-4.jpg" alt="Lawyer Name">
+                    </div>
+                    <h3>Robert Williams</h3>
+                    <p>Associate Lawyer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for a free consultation.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Office Address</h3>
+                            <p>123 Main Street West,<br>Hamilton, ON L8P 1H1</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>(905) 525-2341<br>Emergency: (905) 525-EMER</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@mackesysmye.com<br>cases@mackesysmye.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Office Hours</h3>
+                            <p>Monday-Friday: 8:30am - 5:00pm<br>Weekends: By appointment only</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://mackesysmye.com/wp-content/uploads/2022/03/ms-lawyers-logo-white.png" alt="Mackesy Smye">
+                    </div>
+                    <p>Mackesy Smye is a Hamilton-based law firm specializing in personal injury and disability cases. We are dedicated to fighting for our clients' rights and securing the compensation they deserve.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Practice Areas</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-heading">Practice Areas</h3>
+                    <ul>
+                        <li><a href="#">Brain Injury</a></li>
+                        <li><a href="#">Spinal Cord Injury</a></li>
+                        <li><a href="#">Disability Insurance</a></li>
+                        <li><a href="#">Car Accidents</a></li>
+                        <li><a href="#">Slip & Fall</a></li>
+                        <li><a href="#">Wrongful Death</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <p>123 Main Street West<br>Hamilton, ON L8P 1H1</p>
+                    <p>Phone: (905) 525-2341<br>Email: info@mackesysmye.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Mackesy Smye Lawyers. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
